@@ -1,0 +1,712 @@
+/**
+ * Tutor CUF Frontend Styles
+ * Version 2.0
+ */
+
+/* ============================
+   Field Wrapper
+   ============================ */
+.tutor-cuf-field-wrap {
+    margin-bottom: 15px;
+}
+
+.tutor-cuf-field-wrap label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.tutor-cuf-required {
+    color: #d63638;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+/* ============================
+   Input Fields
+   ============================ */
+.tutor-cuf-field {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d4d7de;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.tutor-cuf-field:focus {
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.15);
+    outline: none;
+}
+
+.tutor-cuf-field::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Textarea */
+.tutor-cuf-field-wrap textarea.tutor-cuf-field {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Select */
+.tutor-cuf-field-wrap select.tutor-cuf-field {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23666'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 35px;
+    cursor: pointer;
+}
+
+/* Date field */
+.tutor-cuf-date-field {
+    cursor: pointer;
+}
+
+/* Phone field */
+.tutor-cuf-phone-field {
+    direction: ltr;
+    text-align: left;
+}
+
+/* ============================
+   Phone + Country Code Wrapper (Modern 2026)
+   ============================ */
+.tutor-cuf-phone-wrapper {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+    border: 1.5px solid #d4d7de;
+    border-radius: 10px;
+    overflow: visible;
+    background: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+}
+
+.tutor-cuf-phone-wrapper:focus-within {
+    border-color: #007cba;
+    box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.12);
+}
+
+/* --- Country Dropdown Container --- */
+.tutor-cuf-country-dropdown {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* --- Trigger Button --- */
+.tutor-cuf-country-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: #f7f8fb;
+    border: none;
+    border-right: 1.5px solid #e2e4e7;
+    border-radius: 10px 0 0 10px;
+    cursor: pointer;
+    height: 100%;
+    font-size: 14px;
+    color: #333;
+    transition: background 0.2s;
+    min-width: 120px;
+    outline: none;
+}
+
+.tutor-cuf-country-trigger:hover {
+    background: #eef3f8;
+}
+
+.tutor-cuf-country-trigger:focus-visible {
+    box-shadow: inset 0 0 0 2px #007cba;
+}
+
+.tutor-cuf-flag-img {
+    border-radius: 3px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.tutor-cuf-flag-placeholder {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.tutor-cuf-selected-code {
+    font-weight: 600;
+    font-size: 14px;
+    color: #222;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.tutor-cuf-chevron {
+    color: #888;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    margin-left: 2px;
+}
+
+.tutor-cuf-country-trigger[aria-expanded="true"] .tutor-cuf-chevron {
+    transform: rotate(180deg);
+}
+
+/* --- Dropdown Panel --- */
+.tutor-cuf-country-panel {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 9999;
+    width: 320px;
+    max-height: 360px;
+    background: #fff;
+    border: 1px solid #e0e3e8;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    animation: tutor-cuf-dropdown-in 0.2s ease forwards;
+}
+
+@keyframes tutor-cuf-dropdown-in {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tutor-cuf-country-panel[style*="display: none"],
+.tutor-cuf-country-panel[style*="display:none"] {
+    animation: none;
+}
+
+/* --- Search Input --- */
+.tutor-cuf-country-search-wrap {
+    position: relative;
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    background: #fafbfc;
+}
+
+.tutor-cuf-country-search {
+    width: 100%;
+    padding: 9px 12px 9px 36px;
+    border: 1.5px solid #dde0e5;
+    border-radius: 8px;
+    font-size: 13.5px;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.tutor-cuf-country-search:focus {
+    border-color: #007cba;
+    box-shadow: 0 0 0 2px rgba(0,124,186,0.1);
+}
+
+.tutor-cuf-country-search::placeholder {
+    color: #aaa;
+}
+
+.tutor-cuf-search-icon {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* --- Country List --- */
+.tutor-cuf-country-list {
+    list-style: none;
+    margin: 0;
+    padding: 6px 0;
+    max-height: 280px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
+.tutor-cuf-country-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tutor-cuf-country-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.tutor-cuf-country-list::-webkit-scrollbar-thumb {
+    background: #d0d3d8;
+    border-radius: 3px;
+}
+
+.tutor-cuf-country-list::-webkit-scrollbar-thumb:hover {
+    background: #b0b3b8;
+}
+
+.tutor-cuf-country-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 14px;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-size: 13.5px;
+    color: #333;
+}
+
+.tutor-cuf-country-item:hover {
+    background: #f0f5ff;
+}
+
+.tutor-cuf-country-item.tutor-cuf-country-active {
+    background: #e8f0fe;
+    font-weight: 600;
+}
+
+.tutor-cuf-country-item.tutor-cuf-country-active::after {
+    content: '✓';
+    margin-left: auto;
+    color: #007cba;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.tutor-cuf-country-item .tutor-cuf-flag-img {
+    width: 28px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.tutor-cuf-country-name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tutor-cuf-country-code {
+    color: #007cba;
+    font-weight: 600;
+    font-size: 13px;
+    flex-shrink: 0;
+    direction: ltr;
+}
+
+.tutor-cuf-country-item[style*="display: none"],
+.tutor-cuf-country-item[style*="display:none"] {
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Phone Input inside wrapper --- */
+.tutor-cuf-phone-wrapper .tutor-cuf-phone-field {
+    border: none;
+    border-radius: 0 10px 10px 0;
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    outline: none;
+    box-shadow: none;
+    direction: ltr;
+    text-align: left;
+    background: transparent;
+    min-width: 0;
+}
+
+.tutor-cuf-phone-wrapper .tutor-cuf-phone-field:focus {
+    box-shadow: none;
+    border: none;
+}
+
+/* Error state for phone wrapper */
+.tutor-cuf-field-error .tutor-cuf-phone-wrapper {
+    border-color: #d63638;
+    box-shadow: 0 0 0 3px rgba(214, 54, 56, 0.12);
+}
+
+/* ============================
+   Radio & Checkbox Groups
+   ============================ */
+.tutor-cuf-radio-group,
+.tutor-cuf-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 6px 0;
+}
+
+.tutor-cuf-radio-label,
+.tutor-cuf-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px solid #e2e4e7;
+    border-radius: 6px;
+    background: #f8f9fa;
+    transition: all 0.2s ease;
+    font-weight: 400 !important;
+    margin-bottom: 0 !important;
+}
+
+.tutor-cuf-radio-label:hover,
+.tutor-cuf-checkbox-label:hover {
+    background: #e7f3ff;
+    border-color: #007cba;
+}
+
+.tutor-cuf-radio-label input:checked + *,
+.tutor-cuf-checkbox-label input:checked + * {
+    color: #007cba;
+}
+
+.tutor-cuf-radio-label input[type="radio"],
+.tutor-cuf-checkbox-label input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    accent-color: #007cba;
+}
+
+/* ============================
+   Error States
+   ============================ */
+.tutor-cuf-field-error .tutor-cuf-field {
+    border-color: #d63638;
+    box-shadow: 0 0 0 2px rgba(214, 54, 56, 0.15);
+}
+
+.tutor-cuf-field-error .tutor-cuf-radio-label,
+.tutor-cuf-field-error .tutor-cuf-checkbox-label {
+    border-color: #f0b8b8;
+}
+
+.tutor-cuf-error {
+    display: block;
+    color: #d63638;
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 500;
+    animation: tutor-cuf-shake 0.3s ease;
+}
+
+@keyframes tutor-cuf-shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* ============================
+   Terms & Conditions — Premium 2026
+   ============================ */
+.tutor-cuf-terms-wrap {
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+.tutor-cuf-terms-label {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 16px;
+    cursor: pointer;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, #f8faff 0%, #f2f6fc 100%);
+    border: 1.5px solid #dde4ef;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 400 !important;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+}
+
+.tutor-cuf-terms-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #007cba, #00b4d8, #007cba);
+    background-size: 200% 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tutor-cuf-terms-label:hover {
+    background: linear-gradient(135deg, #eef4ff 0%, #e8f0fe 100%);
+    border-color: #b0c8e8;
+    box-shadow: 0 4px 16px rgba(0, 124, 186, 0.08);
+    transform: translateY(-1px);
+}
+
+.tutor-cuf-terms-label:hover::before {
+    opacity: 1;
+    animation: tutor-cuf-gradient-slide 2s linear infinite;
+}
+
+@keyframes tutor-cuf-gradient-slide {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Hidden real checkbox */
+.tutor-cuf-terms-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* Custom checkmark */
+.tutor-cuf-terms-checkmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--tutor-cuf-cb-size, 32px);
+    height: var(--tutor-cuf-cb-size, 32px);
+    border: 2.5px solid #b0bac5;
+    border-radius: var(--tutor-cuf-cb-radius, 9px);
+    background: #fff;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 2px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+}
+
+.tutor-cuf-terms-check-svg {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tutor-cuf-terms-checkbox:checked + .tutor-cuf-terms-checkmark {
+    background: linear-gradient(135deg, #007cba, #0096e0);
+    border-color: transparent;
+    box-shadow: 0 3px 10px rgba(0, 124, 186, 0.35);
+    animation: tutor-cuf-check-pop 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tutor-cuf-terms-checkbox:checked + .tutor-cuf-terms-checkmark .tutor-cuf-terms-check-svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes tutor-cuf-check-pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.tutor-cuf-terms-checkbox:focus + .tutor-cuf-terms-checkmark {
+    box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.2);
+}
+
+/* Content wrapper (icon + text) */
+.tutor-cuf-terms-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.tutor-cuf-terms-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--tutor-cuf-icon-box, 42px);
+    height: var(--tutor-cuf-icon-box, 42px);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #e8f4fd 0%, #d4ebfa 100%);
+    color: #007cba;
+    margin-top: -2px;
+}
+
+.tutor-cuf-terms-text {
+    font-size: var(--tutor-cuf-text-size, 16px);
+    color: #2d3648;
+    flex: 1;
+    padding-top: 8px;
+    line-height: 1.65;
+}
+
+.tutor-cuf-terms-link {
+    color: #007cba;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: var(--tutor-cuf-text-size, 16px);
+    background: linear-gradient(to right, #007cba, #007cba) no-repeat left bottom;
+    background-size: 0% 2px;
+    padding-bottom: 2px;
+    transition: background-size 0.3s ease, color 0.2s;
+}
+
+.tutor-cuf-terms-link:hover {
+    background-size: 100% 2px;
+    color: #005a87;
+}
+
+.tutor-cuf-terms-link-text {
+    color: #007cba;
+    font-weight: 700;
+}
+
+/* Checked state: whole label changes */
+.tutor-cuf-terms-checkbox:checked ~ .tutor-cuf-terms-content .tutor-cuf-terms-text {
+    color: #1a2233;
+}
+
+.tutor-cuf-terms-checkbox:checked ~ .tutor-cuf-terms-content .tutor-cuf-terms-icon {
+    background: linear-gradient(135deg, #d4f0d4 0%, #b8e6b8 100%);
+    color: #16a34a;
+}
+
+/* Error state */
+.tutor-cuf-field-error.tutor-cuf-terms-wrap .tutor-cuf-terms-label {
+    border-color: #ef4444;
+    background: linear-gradient(135deg, #fef2f2 0%, #fde8e8 100%);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.tutor-cuf-field-error.tutor-cuf-terms-wrap .tutor-cuf-terms-label::before {
+    opacity: 1;
+    background: linear-gradient(90deg, #ef4444, #f87171, #ef4444);
+    background-size: 200% 100%;
+    animation: tutor-cuf-gradient-slide 1.5s linear infinite;
+}
+
+.tutor-cuf-field-error.tutor-cuf-terms-wrap .tutor-cuf-terms-checkmark {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+.tutor-cuf-field-error.tutor-cuf-terms-wrap .tutor-cuf-terms-icon {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #ef4444;
+}
+
+/* ============================
+   RTL Support (Arabic)
+   ============================ */
+[dir="rtl"] .tutor-cuf-field-wrap select.tutor-cuf-field {
+    background-position: left 12px center;
+    padding-left: 35px;
+    padding-right: 14px;
+}
+
+[dir="rtl"] .tutor-cuf-phone-field {
+    direction: ltr;
+    text-align: right;
+}
+
+[dir="rtl"] .tutor-cuf-phone-wrapper {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .tutor-cuf-country-trigger {
+    border-right: none;
+    border-left: 1.5px solid #e2e4e7;
+    border-radius: 0 10px 10px 0;
+}
+
+[dir="rtl"] .tutor-cuf-phone-wrapper .tutor-cuf-phone-field {
+    border-radius: 10px 0 0 10px;
+}
+
+[dir="rtl"] .tutor-cuf-country-panel {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .tutor-cuf-search-icon {
+    left: auto;
+    right: 24px;
+}
+
+[dir="rtl"] .tutor-cuf-country-search {
+    padding: 9px 36px 9px 12px;
+}
+
+[dir="rtl"] .tutor-cuf-country-item.tutor-cuf-country-active::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+[dir="rtl"] .tutor-cuf-chevron {
+    margin-left: 0;
+    margin-right: 2px;
+}
+
+/* ============================
+   Responsive
+   ============================ */
+@media screen and (max-width: 768px) {
+    .tutor-cuf-radio-group,
+    .tutor-cuf-checkbox-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tutor-cuf-radio-label,
+    .tutor-cuf-checkbox-label {
+        width: 100%;
+    }
+
+    .tutor-cuf-phone-wrapper {
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .tutor-cuf-country-trigger {
+        border-right: none;
+        border-bottom: 1.5px solid #e2e4e7;
+        border-radius: 10px 10px 0 0;
+        min-width: 100%;
+        justify-content: center;
+    }
+
+    .tutor-cuf-phone-wrapper .tutor-cuf-phone-field {
+        border-radius: 0 0 10px 10px;
+    }
+
+    .tutor-cuf-country-panel {
+        width: calc(100vw - 40px);
+        max-width: 340px;
+    }
+
+    [dir="rtl"] .tutor-cuf-phone-wrapper {
+        flex-direction: column;
+    }
+
+    [dir="rtl"] .tutor-cuf-country-trigger {
+        border-left: none;
+        border-bottom: 1.5px solid #e2e4e7;
+        border-radius: 10px 10px 0 0;
+    }
+
+    [dir="rtl"] .tutor-cuf-phone-wrapper .tutor-cuf-phone-field {
+        border-radius: 0 0 10px 10px;
+    }
+}

@@ -1,0 +1,98 @@
+.users_page_custom-user-fields {
+    background-color: #f0f0f1;
+}
+
+table#cif_fields_table,
+table#cuf_fields_table {
+    max-width: 1300px;
+}
+
+#cif_add_field,
+#cuf_add_field {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #007cba;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-color:#007cba;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+}
+
+#cif_fields_table .cif_remove_field,
+#cuf_fields_table .cuf_remove_field{
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #F48FB1;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid #F48FB1;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+#instructor-fields input#submit,
+#user-fields input#submit{
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #007cba;
+    border: 1px solid rgba(0, 0, 0, 0);
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 6px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-color:#007cba;
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out, border-color 200ms ease-in-out;
+}
+
+table#cif_fields_table input,
+table#cuf_fields_table input{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: none;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 7px 12px;
+    margin: 0 10px 0 0;
+    width: 400px;
+    min-height: 35px;   
+    border-radius: 6px !important;
+    border:1px solid #e3e5eb;
+}
+
+#tutor-field-cuf-settings {
+    padding: 20px;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
